@@ -1,11 +1,20 @@
 <script setup>
+import { ref } from 'vue';
 import { useProductStore } from '../stores/products';
+import AddProduct from './forms/AddProduct.vue';
 
 
 const productosPinia = useProductStore()
 
+const showModalProduct = ref(false)
+
+const  openModal=()=>{
+  showModalProduct.value = true
+}
+
 const headers = [
   { title: 'ID', key: 'id' },
+  { title: 'Nombre', key: 'nombre' },
   { title: 'Cantidad', key: 'stock' },
   { title: 'Precio', key: 'precio' },
   { title: 'Caducidad', key: 'caducidad' },
@@ -21,6 +30,7 @@ const headers = [
         <v-card elevation="4">
           <v-card-title>
             Lista de Productos
+            <v-btn color="primary" @click="openModal">Agregar producto</v-btn>
           </v-card-title>
 
           <v-card-text>
@@ -38,6 +48,8 @@ const headers = [
       </v-col>
     </v-row>
   </v-container>
+
+  <AddProduct v-model:show-modal="showModalProduct" />
 </template>
 
 <style scoped>
