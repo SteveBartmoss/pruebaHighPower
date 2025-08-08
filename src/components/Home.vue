@@ -59,7 +59,6 @@ const getExpirateColor=(caducidad)=>{
         <v-card elevation="4">
           <v-card-title>
             Lista de Productos
-            <v-btn color="primary" @click="openModal">Agregar producto</v-btn>
           </v-card-title>
 
           <v-card-text>
@@ -85,6 +84,14 @@ const getExpirateColor=(caducidad)=>{
                 </div>
               </template>
             </v-data-table>
+          </v-card-text>
+
+          <v-card-text class="d-flex justify-start">
+                <v-row justify="end" class="pa-4">
+                    <v-col cols="auto">
+                        <v-btn color="primary" @click="openModal">Agregar producto</v-btn>
+                    </v-col>
+                </v-row>
           </v-card-text>
         </v-card>
       </v-col>
