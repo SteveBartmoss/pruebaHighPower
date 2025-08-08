@@ -1,0 +1,45 @@
+<script setup>
+import { useProductStore } from '../stores/products';
+
+
+const productosPinia = useProductStore()
+
+const headers = [
+  { title: 'ID', key: 'id' },
+  { title: 'Cantidad', key: 'stock' },
+  { title: 'Precio', key: 'precio' },
+  { title: 'Caducidad', key: 'caducidad' },
+  { title: 'Acciones', key: 'acciones' },
+]
+
+</script>
+
+<template>
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12" md="8">
+        <v-card elevation="4">
+          <v-card-title>
+            Lista de Productos
+          </v-card-title>
+
+          <v-card-text>
+            <v-data-table
+              :headers="headers"
+              :items="productosPinia.products"
+              class="elevation-1"
+            >
+              <template v-slot:no-data>
+                No hay productos disponibles.
+              </template>
+            </v-data-table>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<style scoped>
+
+</style>
