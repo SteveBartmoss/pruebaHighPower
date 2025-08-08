@@ -7,9 +7,11 @@ import AddProduct from './forms/AddProduct.vue';
 const productosPinia = useProductStore()
 
 const showModalProduct = ref(false)
+const productId = ref(null)
 
 const  openModal=()=>{
   showModalProduct.value = true
+  productId.value = null
 }
 
 const headers = [
@@ -25,6 +27,12 @@ const headers = [
 const deleteProduct=(id)=>{
   productosPinia.removeProduct(id)
 }
+
+const editProduct=(item)=>{
+  productId.value = item.id
+  showModalProduct.value = true
+}
+
 </script>
 
 <template>
@@ -63,7 +71,7 @@ const deleteProduct=(id)=>{
     </v-row>
   </v-container>
 
-  <AddProduct v-model:show-modal="showModalProduct" />
+  <AddProduct v-model:show-modal="showModalProduct" v-model:product-id="productId" />
 </template>
 
 <style scoped>
