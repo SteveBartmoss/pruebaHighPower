@@ -1,11 +1,10 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import { useProductStore } from '../../stores/products'
 
-
-
 const props = defineProps({
-  showModal: Boolean
+  showModal: Boolean,
+  productId: Number,
 })
 
 const productosPinia = useProductStore()
@@ -72,6 +71,10 @@ const validateForm = () =>{
 const addProduct=()=>{
     if(!validateForm()) return
 
+    if(props.productId){
+        productosPinia.removeProduct(props.productId)
+    }
+
     const newProduct = {
         id: productosPinia.products.length + 1,
         nombre: form.nombre,
@@ -84,7 +87,15 @@ const addProduct=()=>{
     closeModal()
 }
 
-
+watch(()=> props.showModal, (newVal)=>{
+    if(newVal && props.productId){
+        let edit = productosPinia.products.find(element => element.id == props.productId)
+        form.nombre = edit?.nombre
+        form.stock = edit?.stock
+        form.precio = edit?.precio
+        form.caducidad = edit?.caducidad
+    }
+})
 
 </script>
 
