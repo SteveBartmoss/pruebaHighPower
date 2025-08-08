@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useProductStore } from '../stores/products';
 import AddProduct from './forms/AddProduct.vue';
+import { validateExpiration } from '../helpers/dateHelper';
 
 
 const productosPinia = useProductStore()
@@ -33,6 +34,22 @@ const editProduct=(item)=>{
   showModalProduct.value = true
 }
 
+const verifyCaducidad=(caducidad)=>{
+  return validateExpiration(caducidad)
+}
+
+const getExpirateColor=(caducidad)=>{
+  const text = validateExpiration(caducidad)
+  switch(text){
+    case 'Vigente':
+      return 'success'
+    case 'Por caducar':
+      return 'warning'
+    case 'Caducado':
+      return 'error'
+  }
+}
+
 </script>
 
 <template>
@@ -53,6 +70,9 @@ const editProduct=(item)=>{
             >
               <template v-slot:no-data>
                 No hay productos disponibles.
+              </template>
+              <template #item.caducidad="{item}">
+                <v-chip :color="getExpirateColor(item.caducidad)">{{ verifyCaducidad(item.caducidad) }}</v-chip>
               </template>
               <template #item.acciones="{item}">
                 <div style="display: flex; gap: 8px;">
