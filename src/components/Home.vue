@@ -21,6 +21,10 @@ const headers = [
   { title: 'Acciones', key: 'acciones' },
 ]
 
+
+const deleteProduct=(id)=>{
+  productosPinia.removeProduct(id)
+}
 </script>
 
 <template>
@@ -41,6 +45,16 @@ const headers = [
             >
               <template v-slot:no-data>
                 No hay productos disponibles.
+              </template>
+              <template #item.acciones="{item}">
+                <div style="display: flex; gap: 8px;">
+                  <v-btn color="primary" @click="editProduct(item)">
+                    editar
+                  </v-btn>
+                  <v-btn color="error" @click="deleteProduct(item.id)">
+                    borrar
+                  </v-btn>
+                </div>
               </template>
             </v-data-table>
           </v-card-text>
