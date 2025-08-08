@@ -55,7 +55,7 @@ const getExpirateColor=(caducidad)=>{
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="10" lg="8">
         <v-card elevation="4">
           <v-card-title>
             Lista de Productos
