@@ -78,7 +78,7 @@ const searchPokemon = async () => {
               :items-per-page="5"
             >
               <template v-slot:no-data>
-                No hay productos disponibles.
+                No hay pokemons disponibles.
               </template>
               <template #item.tipos="{item}">
                 <span v-for="type in item.tipos" :key="type.type.name">
