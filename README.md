@@ -1,5 +1,33 @@
-# Vue 3 + Vite
+# Prueba tecnica
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Se implemento un crud basico de productos ademas de una parte bonus con una demo simple de la api gratuita pokeapi
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Pasos para levantar el proyecto 
+
+1. Clonar el respositorio 
+
+```bash
+git clone https://github.com/SteveBartmoss/pruebaHighPower.git
+```
+
+2. Instalar dependencias
+
+```bash
+npm install
+```
+
+3. Levantar el proyecto
+
+```bash
+npm run dev
+```
+
+4. Visitar el puerto
+
+```bash
+  VITE v7.1.0  ready in 487 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+```
