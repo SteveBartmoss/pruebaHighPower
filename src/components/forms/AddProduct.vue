@@ -102,7 +102,7 @@ watch(()=> props.showModal, (newVal)=>{
 <template>
     <v-dialog v-model="props.showModal" max-width="500">
         <v-card>
-            <v-card-title>Agregar producto</v-card-title>
+            <v-card-title>{{ props.productId ? 'Editar producto' : 'Agregar producto' }}</v-card-title>
             <v-card-text>
                 <v-form>
                     <v-text-field
@@ -145,7 +145,7 @@ watch(()=> props.showModal, (newVal)=>{
                         <v-btn color="error" dark @click="closeModal">Cerrar</v-btn>
                     </v-col>
                     <v-col cols="auto">
-                        <v-btn color="primary" @click="addProduct">Agregar producto</v-btn>
+                        <v-btn color="primary" @click="addProduct">Guardar</v-btn>
                     </v-col>
                 </v-row>
             </v-card-text>
